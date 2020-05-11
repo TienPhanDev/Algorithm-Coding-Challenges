@@ -8,3 +8,60 @@ function greeting(name){
   return `Hello ${name}!`; 
 }
 
+Do You Play the Theremin
+Define a function doYouPlayTheTheremin that accepts a string as an argument. doYouPlayTheTheremin should return true if the inputted string starts with the letters s or S. Otherwise, doYouPlayTheTheremin should return false.
+
+function doYouPlayTheTheremin(string){
+  if (string[0] === 's' || string[0] === 'S'){
+    return true;
+  }
+  return false;
+}
+
+Last Character
+Define a function lastCharacter that accepts two strings as arguments. lastCharacter should return true if both strings end with the same character. Otherwise, lastCharacter should return false.
+
+function lastCharacter(string1, string2){
+  if(string1[string1.length-1] === string2[string2.length-1]){
+    return true;
+  }
+  return false;
+}
+
+Max of Three
+Write a function maxOfThree that accepts three number arguments. maxOfThree should return largest number of the three.
+
+function maxOfThree(num1,num2,num3){
+  max = num1;
+  if (num2 > num1){
+    max = num2;
+  } 
+  if (num3 > num2 && num3 > num1){
+    max = num3;
+  }
+  return max;
+}
+
+Every Which Way
+Write a function everyWhichWay that accepts three number arguments. everyWhichWay should:
+
+return 'sum' if the sum of the first two numbers equals the third
+return 'difference' if the first number minus the second equals the third
+return 'product' if the product of the first two numbers equals the third
+return 'fraction' if the first number divided by the second equals the third
+return null if none of the above are true
+
+function everyWhichWay(num1,num2,num3){
+  if (num1 + num2 === num3){
+    return 'sum';
+  }
+  if (num1 - num2 === num3){
+    return 'difference';
+  }
+  if (num1 * num2 === num3){
+    return 'product';
+  }
+  if (num1 / num2 === num3){
+    return 'fraction';
+  } else return null;
+}
