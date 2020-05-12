@@ -156,3 +156,325 @@ function myUnshift(originalArray, value) {
   }
   return newArray;
 }
+
+Fullstack HQ
+Refactor the function fullstackHQ so that it returns the correct string:
+
+fullstackHQ();
+// => Fullstack HQ is at Planet Earth, United States, New York State, New York City
+
+let planet = 'Planet Earth';
+
+function fullstackHQ(){
+  let country = 'United States';
+  return middleFunction('United States');
+
+  function middleFunction() {
+    let state = 'New York State';
+    return innerFunction('New York State');
+
+    function innerFunction() {
+      let city = 'New York City';
+      return innermostFunction();
+
+      function innermostFunction() {
+        return 'Fullstack HQ is at ' + planet + ', ' + country + ', ' + state + ', ' + city;
+      }
+    }
+  }
+}
+
+Incremental Change
+Define a function incrementalChange that accepts a number and increments the global variable counter by that amount. The function should also return the current value of the counter after the increment operation.
+
+Each successive call to incrementalChange should progressively change the value held by the counter.
+
+let counter = 0;
+
+// YOUR CODE BELOW
+function incrementalChange(number){
+  return counter += number;
+}
+
+Sum Things Wrong
+The function sumThingsWrong is failing some of its tests. Why? Fix the code so it works.
+
+let sum = 0;
+
+function sumThingsWrong(num1, num2) {
+  sum = num1 + num2;
+  return sum;
+}
+
+How Equal
+Define a function, howEqual, that accepts two arguments of any type.
+
+howEqual should return the string 'loosely' if the two values passed into the function are loosely equal. howEqual should return 'strictly' if the two values are strictly equal. howEqual should return the string 'not equal' if the two values are neither strictly nor loosely equal.
+
+function howEqual(value1, value2) {
+
+  // use === to check if the values are strictly equal
+  if (value1 === value2) {
+    return 'strictly';
+  }
+
+  // use == to check if the values are loosely equal
+  else if (value1 == value2) {
+    return 'loosely';
+  }
+
+  // else, the values must not be equal
+  else {
+    return 'not equal';
+  }
+}
+
+Only One
+Write a function onlyOne that accepts three arguments of any type.
+
+onlyOne should return true only if exactly one of the three arguments are truthy. Otherwise, it should return false.
+
+Do not use the equality operators (== and ===) in your solution.
+
+function onlyOne2(value1, value2, value3) {
+  if (
+      (!!value1 && !value2 && !value3) ||
+      (!value1 && !!value2 && !value3) ||
+      (!value1 && !value2 && !!value3)
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
+Zero Dark Thirty
+Write a function zeroDarkThirty that accepts a number as an arguemnt.
+
+zeroDarkThirty should return a number with all of the zeroes removed:
+
+function zeroDarkThirty(originalValue) {
+  if (originalValue === 0) {
+    return NaN
+  }
+
+  // explicitly coerce the originalValue to a string
+  originalValue = String(originalValue);
+
+  // create a new value
+  let newValue = '';
+
+  // loop through the originalValue
+  for (let i = 0; i < originalValue.length; i++) {
+
+    // store the current character from the string in a variable
+    let currentChar = originalValue[i];
+
+    // as long as the char isn't a zero, concat it onto the newValue string
+    if (currentChar !== '0') {
+      newValue += currentChar;
+    }
+  }
+
+  // explicitly coerce the newValue to a number as it's returned
+  return Number(newValue);
+}
+
+Only Odds
+Define a function, onlyOdds, that accepts a number as an argument. onlyOdds should should return the sum of all the odd numbers between the given number and 1.
+
+If onlyOdds receives an argument less than 1, it should return 0.
+
+function onlyOdds(num){
+  if (num === 0){
+    return 0;
+  }
+   let sum = 0;
+  for (let i = num; i >= 1; i--) {
+    // if i is an odd number...
+    if (i % 2 === 1) {
+      // ...add it to the sum
+      sum += i;
+    }
+  }
+  // return the sum after the for loop is finished
+  return sum;
+}
+
+Crazy Caps
+Define a function, crazyCaps, that accepts a string as an argument. crazyCaps should return a string in which every other character is capitalized. The first letter should be lower-cased.
+
+function crazyCaps(originalString) {
+  // create an empty string;
+  let crazyString = '';
+  // loop through the original string
+  for (let i = 0; i < originalString.length; i++) {
+    // store the character in a variable (optional)
+    let char = originalString[i];
+    // if the index is even...
+    if (i % 2 === 0) {
+      //concatenate the character onto crazyString
+      crazyString += char;
+    }
+    // else, the index must be odd
+    else {
+      // uppercase the char
+      char = char.toUpperCase();
+      // concat the uppercased char onto crazyString
+      crazyString += char;
+    }
+  }
+  // return crazyString after the for loop is finished
+  return crazyString;
+}
+
+Bacteria Time
+Define a function, bacteriaTime, that accepts two arguments:
+
+currentNum (num) - number of starting bacteria
+targetNum (num) - desired number of bacteria
+Assuming that the number of bacteria double every 20 minutes, bacteriaTime should return the number of minutes required for the number of bacteria to grow from the currentNum to a number equal to or larger than the targetNum.
+
+You can assume the currentNum will be a positive integer. If the targetNum is smaller than the currentNum, return the string 'targetNum must be larger than currentNum'.
+
+function bacteriaTime(currentNum, targetNum){
+  if (targetNum < currentNum) {
+    return 'targetNum must be larger than currentNum';
+  }
+  let doublingTime = 0;
+  while (currentNum < targetNum){
+    currentNum*=2;
+    doublingTime+=20;
+  }
+  return doublingTime;
+}
+
+Exponentiate
+Write a function exponentiate that accepts two arguments:
+
+base (number)
+power (number)
+exponentiate should return the result of raising the base by the power. Assume the power argument will always be an integer greater than or equal to zero. Don't forget that any number raised to the 0th power is equal to 1!
+
+Do not use the built-in Math.pow() method
+
+function exponentiate(base, power) {
+  // start result at 1. if power is zero, result will not be changed
+  let result = 1;
+  for (let i = 0; i < power; i++) {
+    // multiply the result by the base for 'power' number of times
+    result *= base;
+  }
+  return result;
+}
+
+My Slice
+Write a function mySlice that accepts up to three arguments:
+
+originalString (string)
+startIdx (number, optional)
+endIdx (number, optional)
+mySlice should return a string. The returned string should be a copy of the original string. If the user defines a startIdx, the returned string should start at that index:
+
+function mySlice(originalString, startIdx, endIdx) {
+  // if startIdx was not passed into the function, return the original string
+  if (startIdx === undefined) {
+    return originalString;
+  }
+  // if endIdx was not passed into the function, give it a default value as the length of the string
+  if (endIdx === undefined) {
+    endIdx = originalString.length;
+  }
+  let slicedString = '';
+  // use the startIdx and endIdx as the start and end of the loop
+  for (let i = startIdx; i < endIdx; i++) {
+    let char = originalString[i];
+    // concatenate the character onto slicedString
+    slicedString += char;
+  }
+  // return slicedString after the for loop
+  return slicedString;
+}
+
+My Index Of
+Define a function, myIndexOf, that accepts three arguments:
+
+source (string)
+searchValue (string)
+startIdx (number) - optional
+If the source contains the searchValue, return the index at which the searchValue starts. If the searchValue appears more than once in the source, return the index from the first occurance of the searchValue. If the searchValue doesn't exist in the source, return -1.
+
+If a startIdx is passed into the function, ignore any instances of the searchValue that occur before that index. If no startIdx is provided, start searching from the beginning of the source.
+
+Do not use the built-in .indexOf string method in your answer.
+
+function myIndexOf(source, searchValue, startIdx) {
+  // if user didn't pass in startIdx, define it by default as 0
+  if (startIdx === undefined) {
+    startIdx = 0;
+  }
+  for (let i = startIdx; i <= source.length - searchValue.length; i++) {
+    // get a substring from the source, starting at i, with the same length as the search value
+    let substring = source.slice(i, i + searchValue.length);
+    // if the substring matches the search value...
+    if (substring === searchValue) {
+      // ...return the current index
+      return i;
+    }
+  }
+  return -1;
+}
+
+Most Vowels
+Define a function, mostVowels, that accepts one argument, a string of words.
+
+mostVowels should return the word that has the most vowels.
+
+mostVowels('I am a keeper with some real rhythms'); // => keeper
+If none of the words have any vowels, return an empty string.
+
+function mostVowels(sentence) {
+  let currentWord = '';
+  let currentVowelCount = 0;
+
+  let maxWord = '';
+  let maxVowelCount = 0;
+  // loop through the entire sentence, character by character
+  for (let i = 0; i < sentence.length; i++) {
+    let char = sentence[i];
+    // if the current character isn't a space and we're not at the end of the sentence
+    if (char !== ' ' && i !== sentence.length - 1) {
+      // in the middle of a word. concat the char onto the currentWord
+      currentWord += char;
+      // if the char is a vowel...
+      if (isVowel(char)) {
+        // increment the count of vowels for the current word
+        currentVowelCount += 1;
+      }
+    }
+    // else, char is a space, or at the end of the sentence.
+    else {
+      // if the vowel count for the just-finished word is greater than the max previously found
+      if (currentVowelCount > maxVowelCount) {
+        // reassign maxVowelCount to the new max
+        maxVowelCount = currentVowelCount;
+        // reassign maxVowel to the new word with the most vowels
+        maxWord = currentWord;
+      }
+      // reset the currentWord and currentVowelCount values for the next word
+      currentWord = '';
+      currentVowelCount = 0;
+    }
+  }
+  return maxWord;
+  
+  function isVowel(char) {
+    let vowels = 'aeiouAEIOU';
+    if (vowels.indexOf(char) >= 0) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+}
