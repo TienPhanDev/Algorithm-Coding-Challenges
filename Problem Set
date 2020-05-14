@@ -478,3 +478,144 @@ function mostVowels(sentence) {
     }
   }
 }
+
+Even and Odd
+Define a function, evenAndOdd, that accepts an array. evenAndOdd should return a new array. The first element in the new array should be an array with all of the even numbers from the original array. The second element in the new array should be an array with all of the odd numbers from the original array.
+
+const evenAndOdd = (array) => {
+  let oddArr = [];
+  let evenArr = [];
+  let newArr = [];
+  
+  for (var i = 0;i < array.length; i++){
+    if(array[i] % 2 === 0){
+      evenArr.push(array[i]);
+    } else if(array[i] % 2 === 1){
+      oddArr.push(array[i]);
+    }
+  }
+  newArr.push(evenArr);
+  newArr.push(oddArr);
+  return newArr;
+}
+
+Array Flattener
+Define a function, arrayFlattener, that accepts a two-dimensional array as an argument.
+
+arrayFlattener should return a new, one-dimensional array.
+
+const arrayFlattener = (array) => {
+  let newArr = [];
+  newArr = array.flat();
+  return newArr;
+}
+
+Zoo Inventory
+Define a function, zooInventory, that accepts a multi-dimensional array of animal facts. zooInventory should return a new, flat array. Each element in the new array should be a sentence about each of the animals in the zoo.
+
+function zooInventory(zoo) {
+  let sentences = [];
+
+  for (let i = 0; i < zoo.length; i++) {
+    sentences.push(`${zoo[i][0]} the ${zoo[i][1][0]} is ${zoo[i][1][1]}.`)
+  }
+
+  return sentences;
+  
+Make Grid
+Write a function makeGrid that accepts two arguments: numColumns (number)numRows (number)
+makeGrid should return a two-dimensional array that represents a grid of the given dimensions.
+
+function makeGrid(numColumns, numRows) {
+  let grid = [];
+
+  for (let i = 0; i < numRows; i++) {
+    let row = [];
+    for (let j = 0; j < numColumns; j++) {
+      row.push(j + 1);
+    }
+    grid.push(row);
+  }
+  return grid;
+}
+
+Remove Columns
+Write a function removeColumns that accepts two arguments
+originalGrid (two-dimensional array)
+numColums (number)
+removeColumns should return a new grid with the correct number of columns removed.
+
+const removeColumns = (grid, numColumns) => {
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < numColumns; j++) {
+      grid[i].pop();
+    }
+  }
+  return grid;
+}
+
+My Join
+Define a function, myJoin, that accepts up to two arguments:
+array
+separator (string, optional)
+myJoin should return a string with all of the elements from the array joined togther. The separator should separate the joined elements:
+
+const myJoin = (array, separator) => {
+  if (separator === undefined) {
+    separator = ",";
+  }
+  let joinedString = '';
+  for (let i = 0; i < array.length; i++) {
+    let element = array[i];
+    if (i !== 0) {
+      joinedString += separator;
+    }
+    if (element !== undefined && element !== null) {
+      joinedString += element;
+    }
+  }
+  return joinedString;
+}
+
+My Slice
+Define a function, mySlice, that accepts up to three arguments:
+originalArray
+startIdx (number, optional)
+endIdx (number, optional)
+mySlice should return a copy of the original array. The copy should include all of the elements from the orignal array, starting at and including the startIdx, up through and excluding the endIdx.
+
+const mySlice = (originalArray, startIdx, endIdx) => {
+  if (startIdx === undefined) {
+    startIdx = 0;
+  }
+  else if (startIdx < 0) {
+    startIdx = originalArray.length + startIdx;
+  }
+
+  if (endIdx === undefined) {
+    endIdx = originalArray.length;
+  }
+  else if (endIdx < 0) {
+    endIdx = originalArray.length + endIdx;
+  }
+
+  let arrayCopy = [];
+  for (let i = startIdx; i < endIdx; i++) {
+    let element = originalArray[i];
+    arrayCopy.push(element);
+  }
+  return arrayCopy;
+}
+
+Rotate Array
+Define a function, rotateArray, that accepts two arguments:
+originalArray (array)
+rotateNum (number)
+If the rotateNum is positive, rotate should return a copy of the original array rotated to the right by the rotateNum of indices.
+rotate([1, 2, 3, 4, 5], 1) // => [5, 1, 2, 3, 4]
+
+const rotateArray = (originalArray, rotateNum) => {
+  let front = originalArray.slice(-rotateNum);
+  let end = originalArray.slice(0, -rotateNum);
+  return front.concat(end);
+}
