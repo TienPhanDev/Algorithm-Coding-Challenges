@@ -846,3 +846,115 @@ tacoCatInc.sale = function(order){
   }
   return finalPrice;
 }
+
+Very Odd
+Write a function, veryOdd. The function accepts an array of numbers. It should return a new array that contains only the odd numbers from the given array. veryOdd must not mutate the given array.
+
+function veryOdd(allTheNums) {
+  let oddNums = [];
+  for (let i = 0; i < allTheNums.length; i++) {
+    let num = allTheNums[i];
+    if (num % 2 === 1) {
+      oddNums.push(num);
+    }
+  }
+  return oddNums;
+}
+
+Very Odd Mutant
+' Write a function, 'veryOddMutant'. The function accepts an array of numbers. The function should mutate the given array by replacing every even number in the array with the string 'normie'.
+'veryOddMutant' should return a count of the number of even numbers it replaced.
+
+function veryOddMutant(array){
+  let count = 0;
+  for (var i = 0; i < array.length; i++){
+    if (array[i] % 2 === 0){
+      array[i] = "normie";
+      count+=1;
+    }
+  }
+  return count;
+}
+
+Clone Machine
+Write a function cloneMachine, that, given an animal (represented as an object), returns a clone of the original animal.
+The name of the clone should be the name of its parent, concatenated with the word 'Clone'.
+cloneMachine should also push the name of the clone to the parent's offspring array.
+
+function cloneMachine(animal){
+  let clone = {
+    name: animal.name + "Clone",
+    species: animal.species,
+    offspring: []
+  };
+  animal.offspring.push(clone.name);
+  return clone; 
+}
+
+My Splice
+Write a 'mySplice' function that mirrors the behavior of JavaScript's .splice() array method. However, mySplice should accept the array to operate on as an argument, rather than being invoked as a method on that array.
+mySplice only needs to take one element to add to the array (the .splice method can actually take any number of values to add).
+Do not use .splice in your function.
+
+function mySplice(array, startIndex, deleteCount, newValue){
+  let removedElements = [];
+  let keptElements = [];
+  for (let i = 0; i < startIndex; i++) {
+    let element = array[i];
+    keptElements.push(element);
+  }
+  if (newValue !== undefined) {
+    keptElements.push(newValue);
+  }
+  for (let i = startIndex; i < startIndex + deleteCount; i++) {
+    let element = array[i];
+    removedElements.push(element);
+  }
+  for (let i = startIndex + deleteCount; i < array.length; i++) {
+    let element = array[i];
+    keptElements.push(element);
+  }
+  while (array.length) {
+    array.pop();
+  }
+  for (let i = 0; i < keptElements.length; i++) {
+    let element = keptElements[i];
+    array.push(element);
+  }
+  return removedElements;
+}
+
+Reverse Array
+Write a function that accepts an array and reverses that array in place. The behavior should mimic the behavior of the native .reverse() array method. However, your reverse function should accept the array to operate on as an argument, rather than being invoked as a method on that array.
+
+function reverseArray(array){
+  let newArr = [];
+  while (array.length) {
+    newArr.push(array.pop());
+  }
+  while (newArr.length) {
+    array.unshift(newArr.pop())
+  }
+  return array;
+}
+
+Deeper Copy
+Write a function, deeperCopy, that, unlike .slice, will deeply copy a two- dimensional array.
+
+function deeperCopy (originalArray) {
+  let copy = [];
+  for (let i = 0; i < originalArray.length; i++) {
+    let element = originalArray[i];
+    if (Array.isArray(element)) {
+      let nestedCopy = [];
+      for (let j = 0; j < element.length; j++) {
+        let innerElement = element[j];
+        nestedCopy.push(innerElement);
+      }
+      copy.push(nestedCopy)
+    } else {
+      copy.push(element);
+    }
+  }
+  return copy;
+}
