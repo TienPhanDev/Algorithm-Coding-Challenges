@@ -743,3 +743,106 @@ function attendanceCheck(day) {
   }
   return presentStudents;
 }
+
+Say My Name
+Define an object, me, that has a name property and a getGreeting method. getGreeting should return a greeting.
+
+let me = {
+  name: "Nick",
+  getGreeting: function(){
+    return 'Hi, my name is Nick.';
+  }
+};
+
+Say Your Name
+Create a new object, me2. Expand the myGreeting method from me so it accepts another object with a name property. The returned greeting should now greet the other object by name.
+
+let me2 = {
+  name: 'Tarana',
+  getGreeting: function(friend) {
+    return 'Hi ' + friend.name + ', my name is ' + this.name + '.';
+  }
+}
+
+Call Them All
+Write a function callThemAll, that, given an object and a value, calls every method in the object, passing in the value as the argument with each call.
+callThemAll should return an array with all of the returned values from each method invocation. The order of the elements in the returned array does not matter.
+
+function callThemAll(object, value){
+  let methodResults = [];
+  // loop through all of the keys in the object
+  for (let key in object) {
+    let currentValue = object[key];
+    if (typeof currentValue === 'function') {
+      let methodResult = currentValue(argument);
+      methodResults.push(methodResult);
+    }
+  }
+  return methodResults;
+}
+
+Tic Tac Toe
+Define an object 'ticTacToe'.
+
+Follow the test specs to create a 'board' property, 'move' method, and a 'clear' method so you can play a game with your partner.
+
+The 'board' property is a grid of arrays that represents the board, where each cell is initiall null.
+
+The 'move' method is a method that, given a character, rowNum, and colNum, adds the character to the correct cell in the board.
+
+The 'clear' method should reset the board to all nulls.
+
+To make it easier to play, have your 'move' method console.log() the board before the method returns the board.
+
+ticTacToe = {
+  board: [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ],
+  move: function(player, rowNum, colNum){
+    if (!this.board[rowNum][colNum]){
+      this.board[rowNum][colNum] = player;
+    } 
+    return this.board;
+  },
+  clear: function(){
+    this.board = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ];
+    return this.board;
+  }
+};
+
+Taco Cat Inc.
+You run an insanely profitable business making gourmet tacos for cats. Given an object that represents the inventory of your company, add a method 'currentInventory' to your object that returns the current value of your company's inventory.
+Then, add a sale method that takes an order object, returns the price of the order, updates the inventory of the purchased items, and adds the price of the order to the company's cash property.
+Heads up: This problem is a bit more involved than anything you'd see on an admissions assessment or interview. Besides being a fun challenge, it's intended to show how you can use objects and their methods to store and change state.
+
+tacoCatInc.currentInventory = function(){
+  let total = 0;
+  for(let category in this){
+    if(category === 'cash'){
+      continue;
+    }
+    let foodType = this[category];
+    for (let item in foodType){
+      let itemsObj = foodType[item];
+      total+= itemsObj.cost * itemsObj.quantity;
+    }
+  }
+  return total;
+}
+
+tacoCatInc.sale = function(order){
+   let finalPrice = 0;
+  for (let category in order) {
+    let choice = order[category];
+    finalPrice += this[category][choice].cost;
+    this.cash += this[category][choice].cost;
+    this[category][choice].quantity--;
+  }
+  return finalPrice;
+}
