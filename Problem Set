@@ -619,3 +619,106 @@ const rotateArray = (originalArray, rotateNum) => {
   let end = originalArray.slice(0, -rotateNum);
   return front.concat(end);
 }
+
+Last Friday Night
+Define a function, lastFridayNight, takes an array of transactions. lastFridayNight should return the total amount she spent last Friday night.
+
+function lastFridayNight(array){
+  let sum = 0;
+  for (var i = 0; i < array.length; i++){
+    sum+=array[i].amount;
+  }
+  return sum;
+}
+
+Compare Objects
+Define a function, compareObjects, that accepts two objects as arguments.
+compareObjects should return true if both objects have exactly the same key/value pairs. Otherwise, compareObjects should return false. Assume the objects are not nested.
+
+function compareObjects(obj1, obj2){
+  if(JSON.stringify(obj1) === JSON.stringify(obj2)){
+    return true;
+  }
+  return false;
+}
+
+Leet Translator
+Define a function called leetTranslator that take a string of normal characters.
+leetTranslator should return a new string that is the translation of the original string into leet.
+The leet codex is below, along with an array of english letters and an array of the corresponding leet characters. Use the two arrays to create a leetCodex object to use in making the translations.
+
+function leetTranslator(string){
+  let leetDict = {};
+  for (let i = 0; i < letters.length; i++) {
+    let letter = letters[i];
+    let leetChar = leetChars[i];
+    leetDict[letter] = leetChar;
+  }
+  let leetString = '';
+  for (let i = 0; i < string.length; i++) {
+    let letter = string[i].toLowerCase();
+    let leetChar = leetDict[letter];
+    leetString += leetChar;
+  }
+  return leetString;
+}
+
+Pet Sounds
+Write a function petSounds that takes an animal name and a country name.
+Using the globally-defined animalNoises array, petSounds should return a sentence that explains which sound the animal makes in the given country.
+
+function petSounds(animal, country){
+for (let i = 0; i < animalNoises.length; i++) {
+    let animalObject = animalNoises[i];
+    if (animal in animalObject) {
+      let countrySounds = animalObject[animal];
+      let sound = countrySounds[country];
+      animal = animal[0].toUpperCase() + animal.slice(1) + 's';
+      return animal + ' in ' + country + ' say ' + sound;
+    }
+  }
+}
+
+Frequency Analysis
+Define a function frequencyAnalysis that accepts a string of lower-case letters.
+frequencyAnalysis should return an object containing the count for each letter in the string.
+
+function frequencyAnalysis(string) {
+  let charFrequencies = {};
+  for (let i = 0; i < string.length; i++) {
+    let char = string[i];
+    if (!charFrequencies[char]) {
+      charFrequencies[char] = 1;
+    }
+    else {
+      charFrequencies[char]++;
+    }
+  }
+  return charFrequencies;
+}
+
+Dog Breeder
+Define a function, dogBreeder, that accepts up to two optional arguments:
+name (string)
+age (number)
+dogBreeder should return an object that represents a new dog! If the user doesn't define a name, assume the dog's name is Steve. If the user doesn't define the dog's age, assume the dog's age is 0.
+
+function dogBreeder(name, age){
+  if (age === undefined) {
+    if (typeof name === 'number') {
+      age = name;
+      name = null;
+    }
+    else {
+      age = 0;
+    }
+  }
+  if (!name) {
+    name = 'Steve';
+  }
+  let newDog =  {
+    name: name,
+    age: age
+  };
+  return newDog;
+}
