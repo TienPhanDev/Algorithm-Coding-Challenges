@@ -1,4 +1,3 @@
-# Fullstack-Bootcamp-Prep.-Problems
-Fullstack Workshop Coding Bootcamp Problem Set
+# Algorithm-Coding-Challenges
 
-Included here is my code and solutions for the Fullstack coding school bootcamp Prep class.  No refactoring was done as of this writing.
+Repository includes my code and solutions for the various coding challenge platforms.
